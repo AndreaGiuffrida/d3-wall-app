@@ -1,0 +1,28 @@
+@include keyframes(show) {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
+#grid {
+
+  position: absolute;
+  @include size();
+
+  .grid-item {
+
+    position: absolute;
+    overflow: hidden;
+
+    img {
+
+      position: absolute;
+      @include size();
+
+      opacity: 0;
+      @include animation(show,.5s);
+
+    }
+
+  }
+
+}

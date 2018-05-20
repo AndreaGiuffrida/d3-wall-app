@@ -1,0 +1,85 @@
+@import "mixins";
+
+$black: #000;
+$white: #fff;
+$red: #f00;
+$appWidth: 2560px;
+$appHeight: 1024px;
+$chunkSizeW:  5%;
+$chunkSizeH:  12.5%;
+
+* {
+  margin: 0;
+  padding: 0;
+
+}
+
+html {
+
+  @include size();
+  background-color: rgba($black,1);
+  box-sizing: content-box;
+
+  body {
+    @include size();
+  }
+
+  #app {
+
+    position: absolute;
+    /*
+    width: $appWidth;
+    height: $appHeight;
+    @include center();
+    */
+
+    @include size();
+    //border: 1px dotted rgba($white,.5);
+    background-color: transparent;
+    overflow: hidden;
+    box-sizing: content-box;
+
+  }
+
+  #wall {
+
+    @include size();
+
+    canvas {
+
+      position: absolute;
+      z-index: 999;
+      @include size();
+    }
+
+    #video-holder {
+
+      position: absolute;
+      z-index: 999;
+      @include size();
+    }
+
+    video {
+
+      position: absolute;
+      width: auto;
+      height: 100%;
+      z-index: 999;
+      opacity: 1;
+      left:50%;
+      top:50%;
+      @include translate(-50%,-50%);
+      @include transition(opacity,.5s);
+
+      &[disabled] {
+        opacity: 0;
+      }
+
+    }
+
+  }
+
+  @import 'debug';
+  @import 'grid';
+
+}

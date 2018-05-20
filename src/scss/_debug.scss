@@ -1,0 +1,81 @@
+
+
+#debug-grid {
+
+
+  position: absolute;
+  @include size();
+  overflow: hidden;
+  z-index: 99999;
+  pointer-events: none;
+
+  .column {
+
+    position: absolute;
+    width: 0;
+    height: 100%;
+    border-right: 1px dotted rgba($white,.5);
+    z-index: 3;
+
+    @for $i from 1 to 21 {
+        &.col#{$i - 1} {
+          left: #{($i - 1) * $chunkSizeW};
+          top: 0;
+        }
+    }
+  }
+
+  .row {
+
+    position: absolute;
+    width: 100%;
+    height: 0;
+    border-bottom: 1px dotted rgba($white,.5);
+    z-index: 3;
+
+    @for $i from 1 to 21 {
+        &.row#{$i - 1} {
+          top: #{($i - 1) * $chunkSizeH};
+          left: 0;
+        }
+    }
+  }
+
+  p {
+
+    position: absolute;
+    color: $white;
+    font-size: 18px;
+    font-family: sans-serif;
+    opacity: .85;
+    @include size();
+
+    @for $i from 0 to 4 {
+      @for $j from 0 to 10 {
+        &.num#{($i * 10) + $j} {
+          top: #{($i * 25) + '%'};
+          left: #{($j * 10) + '%'};
+        }
+      }
+    }
+
+    span {
+      position: relative;
+      left: 10px;
+      top: 10px;
+    }
+  }
+
+  #door {
+
+      position: absolute;
+      width: $chunkSizeW * 4;
+      height: $chunkSizeH * 4;
+      background-color: rgba($black,1);
+      bottom: 0;
+      left: 50%;
+      @include translate(-50%);
+
+  }
+
+}

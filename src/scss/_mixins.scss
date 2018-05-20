@@ -1,0 +1,67 @@
+// Mixin helper to output vendor-prefixed CSS
+/// @access private
+/// @author HugoGiraudel
+/// @param {String} $property - Unprefixed CSS property
+/// @param {*} $value - Raw CSS value
+/// @param {List} $prefixes [()] - List of prefixes to output
+@mixin prefix($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    -#{$prefix}-#{$property}: $value;
+  }
+
+  #{$property}: $value;
+}
+
+/// Mixin helper to prefix `@keyframes`
+/// @access private
+/// @param {String} $name - Animation name
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+@mixin animation($name,$duration:.5s,$delay:0s,$fillmode:forwards,$ease:cubic-bezier(.42, 0, .58, 1)) {
+
+    -webkit-animation-name: $name;
+    -webkit-animation-duration: $duration;
+    -webkit-animation-fill-mode: $fillmode;
+    -webkit-animation-timing-function: $ease;
+    -webkit-animation-delay: $delay;
+
+    animation-name: $name;
+    animation-duration: $duration;
+    animation-fill-mode: $fillmode;
+    animation-timing-function: $ease;
+    animation-delay: $delay;
+}
+
+
+@mixin size($w:100%,$h:100%) {
+  width: $w;
+  height: $h;
+}
+
+@mixin translate($x:0,$y:0,$z:0) {
+
+    @include prefix(transform,translate3d($x,$y,$z),'webkit');
+}
+
+
+
+
+@mixin transition($attr,$duration:.15s,$delay:0s,$ease:cubic-bezier(.19,.5,.46,.88)) {
+
+    -webkit-transition: $attr $duration $ease $delay;
+    transition: $attr $duration $ease $delay;
+}
+
+@mixin center() {
+  left: 50%;
+  top: 50%;
+  @include translate(-50%,-50%);
+}
