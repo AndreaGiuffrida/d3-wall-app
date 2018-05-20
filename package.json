@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://bitbucket.org/buzzbrothers/d3-wall-app.git"
+    "url": "git+https://github.com/AndreaGiuffrida/d3-wall-app.gitt"
   },
   "author": "Andrea Giuffrida",
   "license": "MIT",
   "bugs": {
     "url": ""
   },
-  "homepage": "https://bitbucket.org/buzzbrothers/d3-wall-app#readme",
+  "homepage": "https://github.com/AndreaGiuffrida/d3-wall-app.git#readme",
   "dependencies": {
     "axios": "^0.15.3",
     "lodash": "^4.17.2",
